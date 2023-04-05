@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $ = jQuery;
-var pathWebhook = 'XXXXXXXXXXXXXXXX';
+var url_webhook = 'https://app.imobilead.me/integrate-api/integracoes/webhook/XXXXXXXXXXXXXXXX';
 $(document).ready(function() {
     $(":submit").click(function(e){
       e.preventDefault();
@@ -40,7 +40,7 @@ $(document).ready(function() {
                 {
                 type: "POST",
                 contentType: "application/json",
-                url: 'https://app.imobilead.me/integrate-api/integracoes/webhook/'+pathWebhook,
+                url: url_webhook,
                 data: JSON.stringify(dados),
                 success: function(txt) {
                     if(txt.message =='okay') {
