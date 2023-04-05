@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $ = jQuery;
-var url_webhook = 'https://app.imobilead.me/integrate-api/integracoes/webhook/XXXXXXXXXXXXXXXX';
+var url_webhook = 'https://app.imobilead.me/integrate-api/integracoes/webhook/XXXXXXXXXXXXXXXX'; // // Altere esta url para a sua url própria
 $(document).ready(function() {
     $(":submit").click(function(e){
       e.preventDefault();
@@ -8,7 +8,7 @@ $(document).ready(function() {
       var formName = $form.attr('name');
 	
       erro = '';
-        $($form).find('[required="required"]').each(function(){
+        $form.find('[required="required"]').each(function(){
             $campo = $(this);
             console.log($campo.val());
             if($campo.val() == ''){
@@ -21,19 +21,19 @@ $(document).ready(function() {
   
       if(erro == ''){
             var dados = {
-                "nome": $('input[name="form_fields[nome]"]').val(),
-                "email": $('input[name="form_fields[email]"]').val(),
-                "telefone": $('input[name="form_fields[telefone]"]').val()
+                "nome": $form.find('input[name="form_fields[nome]"]').val(),
+                "email": $form.find('input[name="form_fields[email]"]').val(),
+                "telefone": $form.find('input[name="form_fields[telefone]"]').val()
             };
             
-            if($('input[name="form_fields[produto_nome]"]').length > 0){
-                dados['produto_nome'] = $('input[name="form_fields[produto_nome]"]').val();
+            if($form.find('[name="form_fields[produto_nome]"]').length > 0){
+                dados['produto_nome'] = $form.find('[name="form_fields[produto_nome]"]').val();
             }else{
                 dados['form_name'] = formName;
             }
             
-            if($('input[name="form_fields[imovel]"]').length > 0){
-                dados['observacao'] = 'cliente interessado no produto: '+$('input[name="form_fields[imovel]"]').val();
+            if($form.find('[name="form_fields[imovel]"]').length > 0){
+                dados['observacao'] = 'cliente interessado no produto: '+$form.find('[name="form_fields[imovel]"]').val();
             }
 
             $.ajax(
